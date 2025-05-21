@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Incredible Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="main.css" />
+    <style>
+      /* Rounding Skill Section Animation */
+      .banner {
+        width: 100%;
+        height: 120vh;
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+      }
+      .banner .slider {
+        width: 80px;
+        height: 110px;
+        position: absolute;
+        top: 10%;
+        left: calc(50% - 40px);
+        transform-style: preserve-3d;
+        transform: perspective(1000px);
+        animation: autorun 20s linear infinite;
+      }
+      @keyframes autorun {
+        from {
+          transform: perspective(1000px) rotateX(-16deg) rotateY(360deg);
+        }
+        to {
+          transform: perspective(1000px) rotateX(-16deg) rotateY(0deg);
+        }
+      }
+      .banner .slider .item {
+        position: absolute;
+        inset: 0;
+        transform: rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+          translateZ(200px);
+      }
+      .banner .slider .item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 20px;
+      }
+
+      /* Projects Section 3D Hover */
+      .list {
+        width: 100%;
+        height: 300px;
+        margin-top: 60px;
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+        transform-style: preserve-3d;
+        transform: perspective(1000px);
+        flex-wrap: wrap;
+      }
+      .list .item {
+        width: 120px;
+        height: 180px;
+        border-radius: 20px;
+        transition: 0.4s;
+        filter: brightness(0);
+      }
+      .list .item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 20px;
+      }
+      .list .item:hover {
+        filter: brightness(1);
+        transform: translateZ(150px);
+        width: 200px;
+        height: 280px;
+        margin-top: -60px;
+      }
+      .list .item:hover + .item {
+        filter: brightness(0.6);
+        transform: translateZ(100px) rotateY(40deg);
+      }
+      .list .item:hover + * + * {
+        filter: brightness(0.4);
+        transform: translateZ(50px) rotateY(20deg);
+      }
+      .list .item:hover + * + * + * {
+        filter: brightness(0.2);
+        transform: translateZ(20px) rotateY(10deg);
+      }
+      .list .item:has(+ * :hover) {
+        filter: brightness(0.6);
+        transform: translateZ(100px) rotateY(-40deg);
+      }
+      .list .item:has(+ * + * :hover) {
+        filter: brightness(0.4);
+        transform: translateZ(50px) rotateY(-20deg);
+      }
+      .list .item:has(+ * + * + *:hover) {
+        filter: brightness(0.2);
+        transform: translateZ(20px) rotateY(-10deg);
+      }
+
+      @media (max-width: 768px) {
+        .banner .slider {
+          width: 60px;
+          height: 80px;
+          left: calc(50% - 30px);
+        }
+        .list .item {
+          width: 80px;
+          height: 120px;
+        }
+        .list .item:hover {
+          width: 140px;
+          height: 200px;
+        }
+      }
+    </style>
+  </head>
+<body class="bg-black text-white scroll-smooth">
+  <div class="2xl:w-[1590px] mx-auto">
+    <!-- Header -->
+    <header class="w-[85%] max-w-[1100px] mx-auto bg-white/60 backdrop-blur-md z-50 fixed top-4 left-0 right-0 shadow-md rounded-full">
+      <div class="flex items-center justify-between h-16 px-6">
+        <div class="font-bold text-blue-950 text-xl">
+          <span>Infonet</span><span class="text-orange-700 ml-1">Services</span>
+        </div>
+        <nav class="flex items-center gap-6 text-sm font-medium">
+          <a class="hover:font-bold" href="#">Home</a>
+          <a class="hover:font-bold" href="#about">About</a>
+          <a class="hover:font-bold" href="#skills">Skills</a>
+          <a class="hover:font-bold" href="#projects">Projects</a>
+          <a class="hover:font-bold" href="#contact">Contact</a>
+          <button class="w-[120px] h-10 bg-orange-600 text-white rounded-xl hover:bg-orange-700 transition">
+            Get Started
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex flex-col justify-center items-center gap-4 text-center pt-28" id="hero">
+      <h1 class="text-5xl sm:text-6xl md:text-7xl font-bold text-gradient animate-bounce">
+        I'm Hassan Nadeem
+      </h1>
+      <p class="text-2xl sm:text-3xl mt-2 animate-fade-in-down">Web Developer</p>
+      <div class="flex gap-6 mt-6 socials text-xl">
+        <a href="https://github.com" target="_blank" class="hover:text-orange-500 transition-transform">GitHub</a>
+        <a href="https://linkedin.com" target="_blank" class="hover:text-orange-500 transition-transform">LinkedIn</a>
+        <a href="https://twitter.com" target="_blank" class="hover:text-orange-500 transition-transform">Twitter</a>
+        <a href="https://instagram.com" target="_blank" class="hover:text-orange-500 transition-transform">Instagram</a>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="min-h-[80vh] py-20 px-6 md:px-24 bg-white text-black flex flex-col lg:flex-row items-center gap-12">
+      <img src="/mnt/data/7fec5e6e-d4c1-4000-8984-d4d304b28d7d.png" alt="Hassan Nadeem" class="w-60 h-60 object-cover rounded-full shadow-lg border-4 border-orange-600" />
+      <div>
+        <h2 class="text-4xl font-bold mb-4 text-orange-600">About Me</h2>
+        <p class="text-lg leading-relaxed">
+          As a frontend developer with a strong foundation in creating engaging user interfaces, I have contributed to several projects that enhance user experiences.
+          With a keen interest in expanding my skill set, I am actively learning backend technologies to become a full-stack developer.
+          I am eager to leverage my creativity and technical skills to build comprehensive end-to-end solutions in the near future.
+        </p>
+      </div>
+    </section>
+
+    <section id="skills" class="min-h-screen p-8 flex items-center justify-center bg-gray-900">
+      <div class="banner">
+        <div class="slider" style="--quantity: 10">
+          <div class="item" style="--position: 1"><img src="picture1.jpg" alt="skill" /></div>
+          <div class="item" style="--position: 2"><img src="picture2.png" alt="skill" /></div>
+          <div class="item" style="--position: 3"><img src="picture3.png" alt="skill" /></div>
+          <div class="item" style="--position: 4"><img src="picture4.png" alt="skill" /></div>
+          <div class="item" style="--position: 5"><img src="picture5.jpg" alt="skill" /></div>
+          <div class="item" style="--position: 6"><img src="picture6.png" alt="skill" /></div>
+          <div class="item" style="--position: 7"><img src="picture7.png" alt="skill" /></div>
+          <div class="item" style="--position: 8"><img src="picture8.png" alt="skill" /></div>
+          <div class="item" style="--position: 9"><img src="picture9.png" alt="skill" /></div>
+          <div class="item" style="--position: 10"><img src="picture10.png" alt="skill" /></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="min-h-screen p-8 bg-white">
+      <h2 class="text-3xl text-center font-bold mb-8">Projects</h2>
+      <main>
+        <div class="list">
+          <div class="item"><img src="picture1.jpg" alt="" /></div>
+          <div class="item"><img src="picture2.png" alt="" /></div>
+          <div class="item"><img src="picture3.png" alt="" /></div>
+          <div class="item"><img src="picture4.png" alt="" /></div>
+          <div class="item"><img src="picture5.jpg" alt="" /></div>
+          <div class="item"><img src="picture6.png" alt="" /></div>
+          <div class="item"><img src="picture7.png" alt="" /></div>
+          <div class="item"><img src="picture8.png" alt="" /></div>
+          <div class="item"><img src="picture9.png" alt="" /></div>
+          <div class="item"><img src="picture10.png" alt="" /></div>
+        </div>
+      </main>
+    </section>
+
+    <section id="contact" class="min-h-screen flex items-center justify-center bg-gray-900 p-8">
+      <div class="text-center max-w-xl w-full">
+        <h2 class="text-3xl font-bold mb-6">Contact Us</h2>
+        <form class="space-y-4">
+          <input type="text" placeholder="Your Name" class="w-full px-4 py-2 rounded bg-white/10 text-white" />
+          <input type="email" placeholder="Email Address" class="w-full px-4 py-2 rounded bg-white/10 text-white" />
+          <textarea placeholder="Your Message" rows="4" class="w-full px-4 py-2 rounded bg-white/10 text-white"></textarea>
+          <button type="submit" class="px-6 py-2 bg-orange-600 rounded hover:bg-orange-700">Send Message</button>
+        </form>
+      </div>
+    </section>
+
+    <footer class="text-center text-gray-400 py-6 bg-black border-t border-gray-700">
+      <p>&copy; 2025 Infonet Services. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
